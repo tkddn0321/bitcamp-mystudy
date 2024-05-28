@@ -1,13 +1,13 @@
 #include <stdio.h>
 
 int main(){
+    printf("Hello, World!\n");
 
     int a = 100;
-    int b = 200;
-    int c = a+b;
-
-    printf("%d + %d = %d ..\n",a,b,c);
-
-    printf("Hello, World!\n");
+    
+    if (a < 100){
+        prontf("하하하");
+    }
+     
     return 0;
 }
