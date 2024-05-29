@@ -4,8 +4,9 @@ public class Hello {
 
     int a = 100;
 
-    if(a < 100){
-        System.out.println("하하하");
+    // 테스트입니다.
+    if (a < 100) {
+      System.out.println("하하하");
     }
-  }  
+  }
 }
