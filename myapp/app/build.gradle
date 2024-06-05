@@ -31,13 +31,18 @@ java {
         languageVersion = JavaLanguageVersion.of(21)
     }
 }
-
+// $ gradle run 을 실행하면 다음 설정에 지정된 클래스가 실행된다.
 application {
     // Define the main class for the application.
-    mainClass = 'org.example.App'
+    mainClass = 'bitcamp.myapp.App'
 }
 
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+// $ gradle run 명령어를 통해
+run{
+    standardInput = System.in
 }

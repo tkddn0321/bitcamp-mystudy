@@ -23,13 +23,13 @@ public class Test01 {
     long l2 = 922_3372_0368_5477_5807L; // 최대값
 
     float f1 = 32.17541f; // 최소값
-    float f2 = 23447.12f; // 최대값
+    float f2 = 4294967295f; // 최대값
     // float f3 = f1 + f2;
 
     double d1 = 987654323456.789; // 최소값 15자리
     double d2 = 0.0; // 최대값
 
-    // System.out.println(f3);
+    System.out.println(f2);
 
     char c1 = 0; // 최소값
     char c2 = 65535; // 최대값
