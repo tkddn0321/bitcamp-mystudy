@@ -17,6 +17,7 @@ public class App {
         String menu5 = "5. 도움말";
         String menu6 = "6. 종료";
 
+
         System.out.println(boldAnsi + line + resetAnsi);
         System.out.println(boldAnsi + appTitle + resetAnsi);
         System.out.println(menu1);
