@@ -1,5 +1,6 @@
 package bitcamp.myapp;
 
+
 public class UserCommand {
 
     static final int MAX_SIZE = 100;

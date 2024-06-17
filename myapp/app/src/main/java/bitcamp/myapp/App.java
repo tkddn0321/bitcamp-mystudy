@@ -127,14 +127,14 @@ public class App {
 
 
     static void executeTeamCommand(String command) {
-        System.out.printf("%s\n", command);
+        System.out.printf("팀 %s\n", command);
     }
 
     static void executeProjectCommand(String command) {
-        System.out.printf("%s\n", command);
+        System.out.printf("프로젝트 %s\n", command);
     }
 
     static void executeBoardCommand(String command) {
-        System.out.printf("%s\n", command);
+        System.out.printf("게시판 %s\n", command);
     }
 }
