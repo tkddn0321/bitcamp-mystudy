@@ -13,19 +13,33 @@ public class Test01 {
     // 2 + 3 - 1 * 7 / 3 = ?
 
     // 계산 결과를 담을 변수를 준비한다.
-    int result = 0;
-    Calculator c1 = new Calculator();
 
+    Calculator c1 = new Calculator();
     // 메서드를 호출하여 작업을 수행하고,
     // 리턴 결과는 로컬 변수에 저장한다.
-    Calculator.plus(2, 3);
-    //    result = Calculator.plus(3);
-    //    c1.minus(1);
-    //    c1.multiple(7);
-    //    c1.divide(3);
+    c1.plus(2);
+    c1.plus(3);
+    c1.minus(1);
+    c1.multiple(7);
+    c1.divide(3);
 
-    //    System.out.printf("result = %d\n", c1.getResult());
-    System.out.printf("result = %d\n", );
+    System.out.printf("result = %d\n", c1.getResult());
+  }
+
+  static int plus(int a, int b) {
+    return a + b;
+  }
+
+  static int minus(int a, int b) {
+    return a - b;
+  }
+
+  static int multiple(int a, int b) {
+    return a * b;
+  }
+
+  static int divide(int a, int b) {
+    return a / b;
   }
 
 }

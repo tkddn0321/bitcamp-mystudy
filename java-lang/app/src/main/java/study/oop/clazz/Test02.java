@@ -6,6 +6,10 @@ import study.oop.clazz.vo.Score;
 public class Test02 {
   public static void main(String[] args) {
 
+    Score[] scores = new Score[3];
+    scores[0] = new Score("홍길동", 100, 90, 85);
+    scores[1] = new Score("임꺽정", 100, 90, 85);
+    scores[2] = new Score("유관순", 100, 90, 85);
     Score s1 = new Score("임상우", 50, 50, 50);
 
 

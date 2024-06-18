@@ -1,9 +1,11 @@
 package study.oop.clazz;
 
 public class Calculator {
-  int result;
-  static int plus(int a, int b) {
-    return a + b;
+
+  private int result = 0;
+
+  void plus(int a) {
+    this.result += a;
   }
 
   void minus(int a) {
@@ -20,5 +22,9 @@ public class Calculator {
 
   int getResult() {
     return this.result;
+  }
+
+  void clear() {
+    this.result = 0;
   }
 }
