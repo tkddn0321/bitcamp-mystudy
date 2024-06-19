@@ -1,16 +1,12 @@
 package bitcamp.myapp.vo;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Board {
     private String title;
-    private String description;
-    private LocalDate dateWritten;
+    private String content;
+    private Date createdDate;
     private int viewCount;
-
-    public void increaseViewCount() {
-        this.viewCount++;
-    }
 
     public int getViewCount() {
         return viewCount;
@@ -28,19 +24,19 @@ public class Board {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getContent() {
+        return content;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public LocalDate getDateWritten() {
-        return dateWritten;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setDateWritten(LocalDate date) {
-        this.dateWritten = date;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 }
