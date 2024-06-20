@@ -1,12 +1,27 @@
 package bitcamp.myapp.vo;
 
 public class Project {
+    private static int seqNo; // 매번 초기화 되면 안되고 한번만 선언되기 위해 statuc 으로 선언
+
+    private int no;
     private String title;
     private String description;
     private String startDate;
     private String endDate;
     private User[] members = new User[10];
     private int memberSize;
+
+    public static int getNextSeqNo() {
+        return ++seqNo;
+    }
+
+    public int getNo() {
+        return no;
+    }
+
+    public void setNo(int no) {
+        this.no = no;
+    }
 
     public String getTitle() {
         return title;
