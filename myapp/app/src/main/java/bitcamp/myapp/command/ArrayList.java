@@ -32,7 +32,7 @@ public class ArrayList {
         return arr;
     }
 
-    public int indexOf(User obj) {
+    public int indexOf(Object obj) {
         for (int i = 0; i < size; i++) {
             if (this.list[i] == obj) {
                 return i;
@@ -51,5 +51,9 @@ public class ArrayList {
         }
         ArrayList l;
         return list[index];
+    }
+
+    public boolean contains(Object obj) {
+        return indexOf(obj) != -1;
     }
 }

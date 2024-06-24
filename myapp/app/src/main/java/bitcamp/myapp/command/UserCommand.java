@@ -61,7 +61,7 @@ public class UserCommand {
 
     private void updateUser() {
         int userNo = Prompt.inputInt("회원번호?");
-        User user = this.userList.findByNo(userNo);
+        User user = userList.findByNo(userNo);
         if (user == null) {
             System.out.println("없는 회원입니다.");
             return;
@@ -76,7 +76,7 @@ public class UserCommand {
 
     private void deleteUser() {
         int userNo = Prompt.inputInt("회원번호?");
-        User deletedUser = this.userList.remove(userNo);
+        User deletedUser = userList.remove(userNo);
         if (deletedUser != null) {
             System.out.printf("'%s' 회원을 삭제 했습니다.\n", deletedUser.getName());
         } else {

@@ -1,5 +1,7 @@
 package bitcamp.myapp.vo;
 
+import bitcamp.myapp.command.ArrayList;
+
 public class Project {
     private static int seqNo; // 매번 초기화 되면 안되고 한번만 선언되기 위해 statuc 으로 선언
 
@@ -8,8 +10,7 @@ public class Project {
     private String description;
     private String startDate;
     private String endDate;
-    private User[] members = new User[10];
-    private int memberSize;
+    private ArrayList members = new ArrayList();
 
     public static int getNextSeqNo() {
         return ++seqNo;
@@ -55,33 +56,11 @@ public class Project {
         this.endDate = endDate;
     }
 
-    public boolean containsMember(User user) {
-        for (int i = 0; i < memberSize; i++) {
-            User member = members[i];
-            if (member.getName().equals(user.getName())) {
-                return true;
-            }
-        }
-        return false;
+    public ArrayList getMembers() {
+        return members;
     }
 
-    public void addMember(User user) {
-        members[memberSize++] = user;
-    }
-
-    public int countMembers() {
-        return this.memberSize;
-    }
-
-
-    public User getMember(int index) {
-        return members[index];
-    }
-
-    public void deleteMember(int index) {
-        for (int i = index + 1; i < memberSize; i++) {
-            members[i - 1] = members[i];
-        }
-        members[--memberSize] = null;
+    public void setMembers(ArrayList members) {
+        this.members = members;
     }
 }
