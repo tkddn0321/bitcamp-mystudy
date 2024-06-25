@@ -118,7 +118,7 @@ public class App {
                 } else {
                     switch (menuTitle) {
                         case "회원":
-
+                            userCommand.executeUserCommand(subMenuTitle);
                             break;
                         case "프로젝트":
                             projectCommand.executeProjectCommand(subMenuTitle);

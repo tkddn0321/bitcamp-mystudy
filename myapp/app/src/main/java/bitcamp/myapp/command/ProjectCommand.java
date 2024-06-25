@@ -73,7 +73,7 @@ public class ProjectCommand {
         System.out.printf("기간: %s ~ %s\n", project.getStartDate(), project.getEndDate());
 
         for (int i = 0; i < project.getMembers().size(); i++) {
-            User user = project.getMembers().get(i);
+            User user = (User) project.getMembers().get(i);
             System.out.printf("- %s\n", user.getName());
         }
     }
@@ -134,7 +134,7 @@ public class ProjectCommand {
 
     private void deleteMembers(Project project) {
         for (int i = 0; i < project.getMembers().size(); i++) {
-            User user = project.getMembers().get(i);
+            User user = (User) project.getMembers().get(i);
             String str = Prompt.input("팀원(%s) 삭제?", user.getName());
             if (str.equalsIgnoreCase("y")) {
                 project.getMembers().remove(i);

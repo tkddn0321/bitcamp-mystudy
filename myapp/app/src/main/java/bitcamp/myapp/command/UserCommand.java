@@ -36,12 +36,13 @@ public class UserCommand {
         user.setPassword(Prompt.input("암호?"));
         user.setTel(Prompt.input("연락처?"));
         user.setNo(User.getNextSeqNo());
-        userList.add(user);
+        userList.append(user);
     }
 
     private void listUser() {
         System.out.println("번호 이름 이메일");
-        for (User user : this.userList.toArray()) {
+        for (Object obj : this.userList.getArray()) {
+            User user = (User) obj;
             System.out.printf("%d %s %s\n", user.getNo(), user.getName(), user.getEmail());
         }
     }
@@ -76,8 +77,9 @@ public class UserCommand {
 
     private void deleteUser() {
         int userNo = Prompt.inputInt("회원번호?");
-        User deletedUser = userList.remove(userNo);
+        User deletedUser = userList.findByNo(userNo);
         if (deletedUser != null) {
+            userList.delete(userList.index(deletedUser));
             System.out.printf("'%s' 회원을 삭제 했습니다.\n", deletedUser.getName());
         } else {
             System.out.println("없는 회원입니다.");

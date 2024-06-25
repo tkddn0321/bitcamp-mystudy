@@ -31,7 +31,7 @@ public class BoardCommand {
 
     private void deleteBoard() {
         int boardNo = Prompt.inputInt("게시글 번호?:");
-        Board deletedBoard = this.boardList.delete(boardNo);
+        Board deletedBoard = this.boardList.findByNo(boardNo);
         if (deletedBoard != null) {
             System.out.printf("'%d' 게시글을 삭제 했습니다.\n", deletedBoard.getNo());
         } else {
@@ -68,7 +68,8 @@ public class BoardCommand {
 
     private void listBoard() {
         System.out.println("번호 제목 작성일 조회수");
-        for (Board board : this.boardList.toArray()) {
+        for (Object obj : this.boardList.toArray()) {
+            Board board = (Board) obj;
             System.out.printf("%d %s %tD %s\n", board.getNo(), board.getTitle(), board.getCreatedDate(), board.getViewCount());
         }
     }
@@ -79,7 +80,7 @@ public class BoardCommand {
         board.setContent(Prompt.input("내용?"));
         board.setCreatedDate(new Date());
         board.setNo(Board.getNextSeqNo()); // 불러오면 번호를 세팅
-        this.boardList.add(board);
+        boardList.add(board);
     }
 }
 
