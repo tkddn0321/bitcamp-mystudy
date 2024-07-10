@@ -3,8 +3,7 @@ package bitcamp.myapp;
 import bitcamp.myapp.command.*;
 import bitcamp.myapp.util.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class App {
 
@@ -32,7 +31,7 @@ public class App {
   }
 
   void execute() {
-    menuPath.push("메인");
+    menuPath.push("메인>");
     printMenu();
 
     String command;
