@@ -3,8 +3,6 @@ package bitcamp.myapp.command.board;
 import bitcamp.myapp.command.Command;
 import bitcamp.myapp.vo.Board;
 import bitcamp.util.Prompt;
-
-import java.util.Date;
 import java.util.List;
 
 public class BoardUpdateCommand implements Command {

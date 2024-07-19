@@ -2,24 +2,23 @@ package bitcamp.myapp.command.project;
 
 import bitcamp.myapp.command.Command;
 import bitcamp.myapp.vo.Project;
-import bitcamp.myapp.vo.User;
 import bitcamp.util.Prompt;
-
 import java.util.List;
 
 public class ProjectAddCommand implements Command {
 
   private List<Project> projectList;
-  private ProjectMemberHandler projectMemberHandler;
+  private ProjectMemberHandler memberHandler;
 
-  public ProjectAddCommand(List<Project> projectList, ProjectMemberHandler projectMemberHandler) {
+  public ProjectAddCommand(List<Project> projectList, ProjectMemberHandler memberHandler) {
     this.projectList = projectList;
-    this.projectMemberHandler = projectMemberHandler;
+    this.memberHandler = memberHandler;
   }
 
   @Override
   public void execute(String menuName) {
     System.out.printf("[%s]\n", menuName);
+
     Project project = new Project();
     project.setTitle(Prompt.input("프로젝트명?"));
     project.setDescription(Prompt.input("설명?"));
@@ -27,7 +26,7 @@ public class ProjectAddCommand implements Command {
     project.setEndDate(Prompt.input("종료일?"));
 
     System.out.println("팀원:");
-    projectMemberHandler.addMembers(project);
+    memberHandler.addMembers(project);
 
     project.setNo(Project.getNextSeqNo());
 

@@ -3,7 +3,6 @@ package bitcamp.myapp.command.user;
 import bitcamp.myapp.command.Command;
 import bitcamp.myapp.vo.User;
 import bitcamp.util.Prompt;
-
 import java.util.List;
 
 public class UserUpdateCommand implements Command {
@@ -11,7 +10,6 @@ public class UserUpdateCommand implements Command {
   private List<User> userList;
 
   public UserUpdateCommand(List<User> list) {
-
     this.userList = list;
   }
 
@@ -33,4 +31,5 @@ public class UserUpdateCommand implements Command {
     user.setTel(Prompt.input("연락처(%s)?", user.getTel()));
     System.out.println("변경 했습니다.");
   }
+
 }

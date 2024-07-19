@@ -1,10 +1,8 @@
 package bitcamp.myapp.command.project;
 
-import bitcamp.myapp.command.Command;
 import bitcamp.myapp.vo.Project;
 import bitcamp.myapp.vo.User;
 import bitcamp.util.Prompt;
-
 import java.util.List;
 
 public class ProjectMemberHandler {
@@ -14,7 +12,6 @@ public class ProjectMemberHandler {
   public ProjectMemberHandler(List<User> userList) {
     this.userList = userList;
   }
-
 
   public void addMembers(Project project) {
     while (true) {
@@ -46,7 +43,7 @@ public class ProjectMemberHandler {
       User member = (User) obj;
       String str = Prompt.input("팀원(%s) 삭제?", member.getName());
       if (str.equalsIgnoreCase("y")) {
-        project.getMembers().remove((User) obj);
+        project.getMembers().remove(member);
         System.out.printf("'%s' 팀원을 삭제합니다.\n", member.getName());
       } else {
         System.out.printf("'%s' 팀원을 유지합니다.\n", member.getName());

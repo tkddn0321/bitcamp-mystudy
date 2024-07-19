@@ -3,8 +3,6 @@ package bitcamp.myapp.command.board;
 import bitcamp.myapp.command.Command;
 import bitcamp.myapp.vo.Board;
 import bitcamp.util.Prompt;
-
-import java.util.Date;
 import java.util.List;
 
 public class BoardDeleteCommand implements Command {
@@ -25,7 +23,9 @@ public class BoardDeleteCommand implements Command {
       return;
     }
 
-    Board deletedBoard = (Board) boardList.remove(index);
+    Board deletedBoard = boardList.remove(index);
     System.out.printf("%d번 게시글을 삭제 했습니다.\n", deletedBoard.getNo());
   }
+
+
 }

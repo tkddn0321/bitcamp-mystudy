@@ -1,12 +1,13 @@
-# 23. 특정 클래스에서만 사용되는 의존 객체는 중첩 클래스로 정의하기
+# 28. File I/O API 활용하기 I :  데이터를 바이너리 형식으로 입출력
 
 ## 학습목표
 
-- 중첩 클래스의 구동 원리를 이해하고 사용할 수 있다.
+- File I/O API를 사용하여 데이터를 바이너리 형식으로 출력할 수 있다.
 
 ## 요구사항
 
-- 특정 클래스에서만 사용되는 클래스가 있다면 중첩 클래스로 코드를 정리하기
+- 회원, 프로젝트, 게시판 데이터를 앱을 종료할 때 파일로 저장한다.
+- 회원, 프로젝트, 게시판 데이터를 앱을 실행할 때 파일에서 읽는다.
 
 ## 실행 결과
 
@@ -14,29 +15,18 @@
 
 ## 작업
 
-### Node 클래스를 중첩 클래스로 전환
-
-- LinkedList 클래스 변경
-  - Node 클래스를 LinkedList의 static nested class 로 옮긴다.
-  
-### ListIterator 클래스를 중첩 클래스로 전환
-
-- AbstractList 클래스 변경
-  - ListIterator 클래스를 이 클래스의 static nested class로 옮긴다.
-    - AbstractList01 클래스 참고
-  - ListIterator 클래스를 non-static nested class로 변경한다.
-    - AbstractList02 클래스 참고
-  - ListIterator 클래스를 local class로 변경한다.
-    - AbstractList03 클래스 참고
-  - ListIterator 클래스를 anonymous class로 변경한다.
-    - AbstractList 클래스 참고
-    
+- 데이터를 저장
+  - App 클래스 변경
+    - loadData(), saveData() 메서드 추가
+    - loadUsers(), saveUsers() 메서드 추가
+    - loadProjects(), saveProjects() 메서드 추가
+    - loadBoards(), saveBoards() 메서드 추가
+  - User, Project, Board 클래스 변경
+    - getSeqNo(), initSeqNo() 메서드 추가
+    - getBytes(), valueOf() 메서드 추가
 ## 소스 파일
 
-- Node.java (삭제)
-- LinkedList.java
-- ListIterator.java(삭제)
-- AbstractList.java
-  - AbstractList01.java
-  - AbstractList02.java
-  - AbstractList03.java
+- App.java
+- Board.java
+- Project.java
+- User.java

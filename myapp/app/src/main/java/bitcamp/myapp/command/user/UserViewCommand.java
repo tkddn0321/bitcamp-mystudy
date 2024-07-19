@@ -3,7 +3,6 @@ package bitcamp.myapp.command.user;
 import bitcamp.myapp.command.Command;
 import bitcamp.myapp.vo.User;
 import bitcamp.util.Prompt;
-
 import java.util.List;
 
 public class UserViewCommand implements Command {
@@ -11,7 +10,6 @@ public class UserViewCommand implements Command {
   private List<User> userList;
 
   public UserViewCommand(List<User> list) {
-
     this.userList = list;
   }
 

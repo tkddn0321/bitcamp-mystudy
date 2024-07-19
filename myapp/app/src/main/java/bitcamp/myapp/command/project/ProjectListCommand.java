@@ -2,9 +2,6 @@ package bitcamp.myapp.command.project;
 
 import bitcamp.myapp.command.Command;
 import bitcamp.myapp.vo.Project;
-import bitcamp.myapp.vo.User;
-import bitcamp.util.Prompt;
-
 import java.util.List;
 
 public class ProjectListCommand implements Command {
@@ -24,4 +21,5 @@ public class ProjectListCommand implements Command {
           project.getNo(), project.getTitle(), project.getStartDate(), project.getEndDate());
     }
   }
+
 }

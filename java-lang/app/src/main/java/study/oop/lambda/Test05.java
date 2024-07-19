@@ -1,54 +1,25 @@
 package study.oop.lambda;
 
 public class Test05 {
+  static class MyCalculator{
+    public static int plus(int a, int b) {return a + b;};
+    public static int minus(int a, int b) {return a - b;};
+    public static int multiple(int a, int b) {return a*b;};
+    public static int divide(int a, int b) {return a/b;};
 
-  interface Calculator {
-    int plus(int a, int b);
   }
 
-  static void test(Calculator c) {
-    System.out.println(c.plus(100, 200));
+  interface Calculator{
+    int compute(int x, int y);
   }
 
   public static void main(String[] args) {
-    // 1) 일반 클래스
-    class Calc implements Calculator {
-      @Override
-      public int plus(int a, int b) {
-        return a + b;
-      }
-    }
-    Calculator c1 = new Calc();
-    test(c1);
 
-    // 2) 익명 클래스
-    Calculator c2 = new Calculator() {
-      @Override
-      public int plus(int a, int b) {
-        return a + b;
-      }
-    };
-    test(c2);
+    Calculator obj = (x, y) -> MyCalculator.plus(x,y);
 
-    //3)익명 클래스 직접 대입
-    test(new Calculator() {
-      @Override
-      public int plus(int a, int b) {
-        return a + b;
-      }
-    });
+    int result = obj.compute(100, 200);
+    System.out.println(result);
 
-    // 4) 람다
-    Calculator c3 = (int a, int b) -> {
-      return a + b;
-    };
-    test(c3);
-
-    // 5) 람다 + 중괄호 생략
-    Calculator c4 = (int a, int b) -> a + b;
-    test(c4);
-
-    // 6) 람다 직접 대입
-    test((int a, int b) -> a + b);
   }
 }
+

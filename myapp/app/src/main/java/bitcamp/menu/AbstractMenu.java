@@ -2,32 +2,32 @@ package bitcamp.menu;
 
 import java.util.Objects;
 
-public abstract class AbstractMenu implements Menu{
+public abstract class AbstractMenu implements Menu {
 
-    protected String title;
+  protected String title;
 
-    public AbstractMenu(String title){
-        this.title = title;
+  public AbstractMenu(String title) {
+    this.title = title;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof AbstractMenu menuItem)) {
-            return false;
-        }
-        return Objects.equals(title, menuItem.title);
+    if (!(o instanceof AbstractMenu menuItem)) {
+      return false;
     }
+    return Objects.equals(title, menuItem.title);
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(title);
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(title);
+  }
 
-    @Override
-    public String getTitle() {
-        return title;
-    }
+  @Override
+  public String getTitle() {
+    return title;
+  }
 }

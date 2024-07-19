@@ -2,19 +2,17 @@ package bitcamp.myapp.command.project;
 
 import bitcamp.myapp.command.Command;
 import bitcamp.myapp.vo.Project;
-import bitcamp.myapp.vo.User;
 import bitcamp.util.Prompt;
-
 import java.util.List;
 
 public class ProjectUpdateCommand implements Command {
 
   private List<Project> projectList;
-  private ProjectMemberHandler projectMemberHandler;
+  private ProjectMemberHandler memberHandler;
 
-  public ProjectUpdateCommand(List<Project> projectList, ProjectMemberHandler projectMemberHandler) {
+  public ProjectUpdateCommand(List<Project> projectList, ProjectMemberHandler memberHandler) {
     this.projectList = projectList;
-    this.projectMemberHandler = projectMemberHandler;
+    this.memberHandler = memberHandler;
   }
 
   @Override
@@ -35,9 +33,10 @@ public class ProjectUpdateCommand implements Command {
     project.setEndDate(Prompt.input("종료일(%s)?", project.getEndDate()));
 
     System.out.println("팀원:");
-    projectMemberHandler.deleteMembers(project);
-    projectMemberHandler.addMembers(project);
+    memberHandler.deleteMembers(project);
+    memberHandler.addMembers(project);
 
     System.out.println("변경 했습니다.");
   }
+
 }
