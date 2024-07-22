@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Objects;
 
-public class Board implements Serializable {
+public class Board implements Serializable, SequenceNo {
 
   private static int seqNo;
 
@@ -88,6 +88,7 @@ public class Board implements Serializable {
     return Objects.hashCode(no);
   }
 
+  @Override
   public int getNo() {
     return no;
   }

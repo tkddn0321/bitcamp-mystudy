@@ -1,15 +1,11 @@
 package bitcamp.myapp.vo;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.Serializable;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Project implements Serializable {
+public class Project implements Serializable , SequenceNo {
 
   private static int seqNo;
 
@@ -43,38 +39,49 @@ public class Project implements Serializable {
     return seqNo;
   }
 
-  public String toCsvString() {
-    return new StringBuilder()
-            .append(no).append(",")
-            .append(title).append(",")
-            .append(description).append(",")
-            .append(startDate).append(",")
-            .append(endDate).append(",")
-            .append(getMembers())
-            .toString();
-  }
+  public static Project valueOf(String csv) {
+    String[] values = csv.split(",");
 
-  @Override
-  public String toString() {
-    return "Project{" +
-            "no=" + no +
-            ", title='" + title + '\'' +
-            ", description='" + description + '\'' +
-            ", startDate='" + startDate + '\'' +
-            ", endDate='" + endDate + '\'' +
-            ", members=" + members +
-            '}';
-  }
-
-  public static Project valueOf(String csv){
-    String[] values = csv.split(","); // csv "1,홍길동,hong@test.com,1111,010-1111-22222"
     Project project = new Project();
     project.setNo(Integer.parseInt(values[0]));
     project.setTitle(values[1]);
     project.setDescription(values[2]);
     project.setStartDate(values[3]);
     project.setEndDate(values[4]);
+
+    String[] members = values[5].split("#");
+    for (String member : members) {
+      String[] items = member.split("_");
+      User user = new User();
+      user.setNo(Integer.parseInt(items[0]));
+      user.setName(items[1]);
+      user.setEmail(items[2]);
+      user.setPassword(items[3]);
+      user.setTel(items[4]);
+      project.getMembers().add(user);
+    }
+
     return project;
+  }
+
+  public String toCsvString() {
+
+    StringBuilder membersBuilder = new StringBuilder();
+    for (User member : members) {
+      if (membersBuilder.length() > 0) {
+        membersBuilder.append("#");
+      }
+      membersBuilder.append(member.toCsvString().replaceAll(",", "_"));
+    }
+
+    return new StringBuilder()
+            .append(no).append(",")
+            .append(title).append(",")
+            .append(description).append(",")
+            .append(startDate).append(",")
+            .append(endDate).append(",")
+            .append(membersBuilder.toString())
+            .toString();
   }
 
   @Override
@@ -94,6 +101,7 @@ public class Project implements Serializable {
     return Objects.hashCode(no);
   }
 
+  @Override
   public int getNo() {
     return no;
   }
