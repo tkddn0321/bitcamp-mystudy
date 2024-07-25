@@ -71,7 +71,7 @@ public class Project implements Serializable , SequenceNo {
       if (membersBuilder.length() > 0) {
         membersBuilder.append("#");
       }
-      membersBuilder.append(member.toCsvString().replaceAll(",", "_"));
+      //membersBuilder.append(member.toCsvString().replaceAll(",", "_"));
     }
 
     return new StringBuilder()

@@ -10,9 +10,10 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Objects;
 
-public class Board implements Serializable, SequenceNo {
+public class Board implements Serializable {
 
-  private static int seqNo;
+  private static final long serialVersionUID = 1L;
+
 
   private int no;
   private String title;
@@ -27,28 +28,6 @@ public class Board implements Serializable, SequenceNo {
     this.no = no;
   }
 
-  public static int getNextSeqNo() {
-    return ++seqNo;
-  }
-
-  public static void initSeqNo(int no) {
-    seqNo = no;
-  }
-
-  public static int getSeqNo() {
-    return seqNo;
-  }
-
-  public String toCsvString() {
-    return new StringBuilder()
-            .append(no).append(",")
-            .append(title).append(",")
-            .append(content).append(",")
-            .append(createdDate.getTime()).append(",")
-            .append(viewCount)
-            .toString();
-  }
-
   @Override
   public String toString() {
     return "Board{" +
@@ -58,17 +37,6 @@ public class Board implements Serializable, SequenceNo {
             ", createdDate=" + createdDate +
             ", viewCount=" + viewCount +
             '}';
-  }
-
-  public static Board valueOf(String csv){
-    String[] values = csv.split(",");
-    Board board= new Board();
-    board.setNo(Integer.parseInt(values[0]));
-    board.setTitle(values[1]);
-    board.setContent(values[2]);
-    board.setCreatedDate(new Date(Long.parseLong(values[3])));
-    board.setViewCount(Integer.parseInt(values[4]));
-    return board;
   }
 
   @Override
@@ -88,7 +56,6 @@ public class Board implements Serializable, SequenceNo {
     return Objects.hashCode(no);
   }
 
-  @Override
   public int getNo() {
     return no;
   }
