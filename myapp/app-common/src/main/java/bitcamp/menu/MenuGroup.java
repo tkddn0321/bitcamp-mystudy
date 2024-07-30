@@ -1,36 +1,32 @@
 package bitcamp.menu;
 
 import bitcamp.util.Prompt;
-
 import java.util.ArrayList;
 import java.util.Stack;
 
 public class MenuGroup extends AbstractMenu {
 
     private MenuGroup parent;
-    private Stack<String> menuPath;
     private ArrayList<Menu> children = new ArrayList<>();
     private String exitMenuTitle = "이전";
 
     public MenuGroup(String title) {
         super(title);
-        menuPath = new Stack<>();
     }
-
 
     @Override
     public void execute() {
-        menuPath.push(title);
+
+        String menuPath = getMenuPath();
 
         printMenus();
 
         while (true) {
-            String command = Prompt.input("%s>", getMenuPathTitle());
+            String command = Prompt.input("%s>", menuPath);
             if (command.equals("menu")) {
                 printMenus();
                 continue;
             } else if (command.equals("0")) { // 이전 메뉴 선택
-                menuPath.pop();
                 return;
             }
 
@@ -51,9 +47,8 @@ public class MenuGroup extends AbstractMenu {
     }
 
     public void setExitMenuTitle(String title) {
-        this.exitMenuTitle = title;
+        exitMenuTitle = title;
     }
-
 
     private void printMenus() {
         System.out.printf("[%s]\n", title);
@@ -64,25 +59,34 @@ public class MenuGroup extends AbstractMenu {
         System.out.printf("0. %s\n", exitMenuTitle);
     }
 
-    private String getMenuPathTitle() {
+    private String getMenuPath() {
+        // 현재 메뉴그룹에서 상위 메뉴그룹으로 따라 올라가면서 메뉴이름을 스택에 담는다.
+        Stack<String> menuPathStack = new Stack<>();
+        MenuGroup menuGroup = this;
+        while (menuGroup != null) {
+            menuPathStack.push(menuGroup.title);
+            menuGroup = menuGroup.parent;
+        }
+
+        // 스택에 담겨 있는 메뉴이름을 꺼내서 메뉴 경로를 만든다.
         StringBuilder strBuilder = new StringBuilder();
-        for (int i = 0; i < menuPath.size(); i++) {
+        while (!menuPathStack.isEmpty()) {
             if (strBuilder.length() > 0) {
                 strBuilder.append("/");
             }
-            strBuilder.append(menuPath.get(i));
+            strBuilder.append(menuPathStack.pop());
         }
+
         return strBuilder.toString();
     }
 
     private void setParent(MenuGroup parent) {
         this.parent = parent;
-        this.menuPath = parent.menuPath;
     }
 
     public void add(Menu child) {
-        if (child instanceof MenuGroup menus) {
-            menus.setParent(this);
+        if (child instanceof MenuGroup) {
+            ((MenuGroup) child).setParent(this);
         }
         children.add(child);
     }
@@ -98,7 +102,7 @@ public class MenuGroup extends AbstractMenu {
         return children.get(index);
     }
 
-    public int countMenu() {
+    public int countMenus() {
         return children.size();
     }
 }

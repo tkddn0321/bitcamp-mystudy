@@ -15,7 +15,7 @@ public class Project implements Serializable {
     private String startDate;
     private String endDate;
     private List<User> members = new ArrayList<>();
-    ;
+
 
     public Project() {
     }

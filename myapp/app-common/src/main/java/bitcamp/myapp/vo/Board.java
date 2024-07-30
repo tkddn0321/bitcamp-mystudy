@@ -1,19 +1,12 @@
 package bitcamp.myapp.vo;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
+import java.io.Serializable;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Objects;
 
-// Serializable 인터페이스
-// - 추상 메서드가 없다.
-// - 직렬화/역직렬화 승인한다는 표시
-// - 유사한 예) Cloneable 인터페이스
-public class Board implements Serializable, SequenceNo {
+public class Board implements Serializable {
 
-    private static int seqNo;
+    private static final long serialVersionUID = 1L;
 
     private int no;
     private String title;
@@ -21,33 +14,11 @@ public class Board implements Serializable, SequenceNo {
     private Date createdDate;
     private int viewCount;
 
-    public static void initSeqNo(int no) {
-        seqNo = no;
-    }
-
     public Board() {
-
     }
 
     public Board(int no) {
         this.no = no;
-    }
-
-    public static int getNextSeqNo() {
-        return ++seqNo;
-    }
-
-
-    public static Board valueOf(String csv) {
-        String[] values = csv.split(",");
-        Board board = new Board();
-        board.setNo(Integer.valueOf(values[0]));
-        board.setTitle(values[1]);
-        board.setContent(values[2]);
-
-        board.setCreatedDate(new Date(Long.valueOf(values[3])));
-        board.setViewCount(Integer.valueOf(values[4]));
-        return board;
     }
 
     @Override
@@ -78,7 +49,6 @@ public class Board implements Serializable, SequenceNo {
         return Objects.hashCode(no);
     }
 
-    @Override
     public int getNo() {
         return no;
     }
