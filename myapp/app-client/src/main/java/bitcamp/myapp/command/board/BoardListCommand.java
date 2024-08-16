@@ -18,8 +18,12 @@ public class BoardListCommand implements Command {
         try {
             for (Board board : boardDao.list()) {
 
-                System.out.printf("%d %s %tY-%3$tm-%3$td %d\n",
-                        board.getNo(), board.getTitle(), board.getCreatedDate(), board.getViewCount());
+                System.out.printf("%d %s %s %tY-%4$tm-%4$td %d\n",
+                        board.getNo(),
+                        board.getTitle(),
+                        board.getWriter().getName(),
+                        board.getCreatedDate(),
+                        board.getViewCount());
             }
         } catch (Exception e) {
             System.out.println("목록 조회 중 오류 발생!");
