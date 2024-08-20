@@ -4,7 +4,6 @@ import bitcamp.command.Command;
 import bitcamp.myapp.dao.ProjectDao;
 import bitcamp.myapp.vo.Project;
 import bitcamp.util.Prompt;
-
 import java.sql.Connection;
 
 public class ProjectAddCommand implements Command {
@@ -13,7 +12,8 @@ public class ProjectAddCommand implements Command {
     private ProjectMemberHandler memberHandler;
     private Connection con;
 
-    public ProjectAddCommand(ProjectDao projectDao, ProjectMemberHandler memberHandler, Connection con) {
+    public ProjectAddCommand(ProjectDao projectDao, ProjectMemberHandler memberHandler,
+                             Connection con) {
         this.projectDao = projectDao;
         this.memberHandler = memberHandler;
         this.con = con;

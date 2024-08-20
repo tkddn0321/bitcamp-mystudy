@@ -13,6 +13,7 @@ public class BoardDeleteCommand implements Command {
     private ApplicationContext ctx;
 
     public BoardDeleteCommand(BoardDao boardDao, ApplicationContext ctx) {
+
         this.boardDao = boardDao;
         this.ctx = ctx;
     }
@@ -21,6 +22,7 @@ public class BoardDeleteCommand implements Command {
     public void execute(String menuName) {
         User loginUser = (User) ctx.getAttribute("loginUser");
 
+        System.out.printf("[%s]\n", menuName);
         int boardNo = Prompt.inputInt("게시글 번호?");
 
         try {
@@ -33,14 +35,13 @@ public class BoardDeleteCommand implements Command {
                 return;
             }
 
-            if (boardDao.delete(boardNo)) {
-                System.out.printf("%d번 게시글을 삭제 했습니다.\n", deletedBoard.getNo());
-            } else {
-                System.out.println("삭제 실패입니다.");
-            }
-        } catch (Exception e) {
-            System.out.println("데이터 삭제 중 오류 발생!");
-        }
+            boardDao.delete(boardNo);
+            System.out.printf("'%s'번 게시글을 삭제 했습니다.\n", deletedBoard.getNo());
 
+        } catch (Exception e) {
+            System.out.println("삭제 중 오류 발생!");
+        }
     }
+
+
 }
