@@ -8,13 +8,12 @@ import bitcamp.myapp.vo.User;
 import bitcamp.net.Prompt;
 import org.apache.ibatis.session.SqlSession;
 
-public                           class BoardAddCommand implements Command {
+public class BoardAddCommand implements Command {
 
     private BoardDao boardDao;
     private SqlSession sqlSession;
 
     public BoardAddCommand(BoardDao boardDao, SqlSession sqlSession) {
-
         this.boardDao = boardDao;
         this.sqlSession = sqlSession;
     }
