@@ -7,16 +7,17 @@ import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.User;
 import bitcamp.net.Prompt;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 
 public class BoardUpdateCommand implements Command {
 
     private BoardDao boardDao;
-    private SqlSession sqlSession;
+    private SqlSessionFactory sqlSessionFactory;
 
-    public BoardUpdateCommand(BoardDao boardDao, SqlSession sqlSession) {
+    public BoardUpdateCommand(BoardDao boardDao, SqlSessionFactory sqlSessionFactory) {
 
         this.boardDao = boardDao;
-        this.sqlSession = sqlSession;
+        this.sqlSessionFactory = sqlSessionFactory;
     }
 
     @Override
@@ -40,11 +41,11 @@ public class BoardUpdateCommand implements Command {
             board.setContent(prompt.input("내용(%s)?", board.getContent()));
 
             boardDao.update(board);
-            sqlSession.commit();
+            sqlSessionFactory.openSession(false).commit();
             prompt.println("변경 했습니다.");
 
         } catch (Exception e) {
-            sqlSession.rollback();
+            sqlSessionFactory.openSession(false).rollback();
             prompt.println("변경 중 오류 발생!");
             e.printStackTrace();
         }

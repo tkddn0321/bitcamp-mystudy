@@ -2,6 +2,7 @@ package bitcamp.myapp.dao;
 
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -12,10 +13,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DaoFactory {
-    private org.apache.ibatis.session.SqlSession sqlSession;
+    private SqlSessionFactory sqlSessionFactory;
 
-    public DaoFactory(SqlSession sqlSession) {
-        this.sqlSession = sqlSession;
+    public DaoFactory(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
     }
 
     public <T> T createObject(Class<T> daoType) throws Exception {
@@ -47,6 +48,9 @@ public class DaoFactory {
         }
 
         Class<?> returnType = method.getReturnType();
+
+        // 현재 스레드에 보관된 SqlSession 을 꺼낸다.
+        SqlSession sqlSession = sqlSessionFactory.openSession(false);
 
         if (returnType == List.class) {
                 return sqlSession.selectList(statement, paramValue);
