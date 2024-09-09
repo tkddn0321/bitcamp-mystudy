@@ -1,6 +1,6 @@
 <%@ page
-    language="java"
-    contentType="text/html;charset=UTF-8"
+    language="java" 
+    contentType="text/html;charset=UTF-8" 
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
 <%@ page import="bitcamp.myapp.vo.Board"%>
@@ -20,7 +20,7 @@ if (board == null) {
 } else {
 %>
 
-<form action='/board/update'>
+<form action='/board/update' method="post">
       번호: <input readonly name='no' type='text' value='<%=board.getNo()%>'><br>
       제목: <input name='title' type='text' value='<%=board.getTitle()%>'><br>
       내용: <textarea name='content'><%=board.getContent()%></textarea><br>

@@ -1,6 +1,6 @@
 <%@ page
-    language="java"
-    contentType="text/html;charset=UTF-8"
+    language="java" 
+    contentType="text/html;charset=UTF-8" 
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
 <%@ page import="bitcamp.myapp.vo.User"%>
@@ -9,7 +9,7 @@
 <jsp:include page="/header.jsp"/>
 
 <h1>회원 목록</h1>
-<p><a href='/user/form'>새 회원</a></p>
+<p><a href='/user/add'>새 회원</a></p>
 <table>
   <thead>
       <tr><th>번호</th><th>이름</th><th>이메일</th></tr>

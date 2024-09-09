@@ -1,6 +1,6 @@
 <%@ page
-    language="java"
-    contentType="text/html;charset=UTF-8"
+    language="java" 
+    contentType="text/html;charset=UTF-8" 
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
 <%@ page import="bitcamp.myapp.vo.User"%>
@@ -20,7 +20,7 @@ if (user == null) {
 } else {
 %>
 
-<form action='/user/update'>
+<form action='/user/update' method="post">
     번호: <input name='no' readonly type='text' value='<%=user.getNo()%>'><br>
     이름: <input name='name' type='text' value='<%=user.getName()%>'><br>
     이메일: <input name='email' type='email' value='<%=user.getEmail()%>'><br>

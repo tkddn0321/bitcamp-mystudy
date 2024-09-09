@@ -1,6 +1,6 @@
 <%@ page
-    language="java"
-    contentType="text/html;charset=UTF-8"
+    language="java" 
+    contentType="text/html;charset=UTF-8" 
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
 <%@ page import="bitcamp.myapp.vo.Board"%>
@@ -9,7 +9,7 @@
 <jsp:include page="/header.jsp"/>
 
 <h1>게시글 목록</h1>
-<p><a href='/board/form'>새 글</a></p>
+<p><a href='/board/add'>새 글</a></p>
 <table>
   <thead>
       <tr><th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th></tr>
